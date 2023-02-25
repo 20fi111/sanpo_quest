@@ -3,14 +3,14 @@
 from cs50 import SQL
 
 def main():
-    open("gacha.db", "w").close()
-    db = SQL("sqlite:///gacha.db")
+    open("src/gacha.db", "w").close()
+    db = SQL("sqlite:///src/gacha.db")
 
     #データベースを作成
     db.execute("CREATE TABLE gachas(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, choice TEXT)")
 
     #choice.txtを開く
-    with open("choice.txt", "r") as file:
+    with open("src/choice.txt", "r") as file:
 
         #fileを行ごとに分割しリスト化する
         datalist = file.readlines()

@@ -14,7 +14,6 @@ def get_all_item():
     conn.close()
     return result
 
-
 def random_choice(result):
     todays_choice = random.sample(result,k=3)
     choiceA = todays_choice["0"]

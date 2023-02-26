@@ -1,29 +1,29 @@
 #ガチャの中身を更新するためのプログラム
 
-from cs50 import SQL
+import sqlite3
 
 def main():
-    open("src/gacha.db", "w").close()
-    db = SQL("sqlite:///src/gacha.db")
-
-    #データベースを作成
-    db.execute("CREATE TABLE gachas(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, choice TEXT)")
+    conn = sqlite3.connect("db/gacha.db")
+    cur = conn.cursor()
 
     #choice.txtを開く
-    with open("src/choice.txt", "r") as file:
+    with open("db/choice.txt", "r") as file:
 
         #fileを行ごとに分割しリスト化する
         datalist = file.readlines()
 
         for data in datalist:
             #dataがすでにデータベースに存在しないかを調べる
-            rows = db.execute("SELECT * FROM gachas WHERE choice = ?", data)
-            if len(rows) == 1:
+            rows = cur.execute("SELECT COUNT (*) AS num FROM gachas WHERE choice = ?", (data,))
+            count = rows.fetchone()[0]
+            if count >= 1:
                 continue
 
             #存在しなければデータベースに追加
             else:
-                db.execute("INSERT INTO gachas (choice) VALUES(?)", data)
+                cur.execute("INSERT INTO gachas (choice) VALUES (?)", (data,))
 
+    conn.commit()
+    conn.close()
 
 main()

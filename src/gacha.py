@@ -1,7 +1,7 @@
 import sqlite3
 import random
 
-get_all_item()
+
 
 def get_all_item():
     conn = sqlite3.connect("gacha.db")
@@ -22,4 +22,5 @@ def random_choice(result):
 
     return choiceA,choiceB,choiceC
 
+get_all_item()
 

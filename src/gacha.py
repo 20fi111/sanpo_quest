@@ -6,7 +6,7 @@ import random
 def get_all_item():
     conn = sqlite3.connect("gacha.db")
     conn.row_factory = sqlite3.Row
-    cur = conn.cursur()
+    cur = conn.cursor()
     cur.execute("select * from gachas")
     result = [dict(row) for row in cur.fetchall()]
 

@@ -38,5 +38,5 @@ def random_choice():
 
     return choiceA,choiceB,choiceC
 
-# 一連の動作が行われるか確認のため呼び出してます
+# 一連の動作が行われるか確認のため呼び出し
 random_choice()

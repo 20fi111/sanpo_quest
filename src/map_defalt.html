@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>位置情報取得</title>
+  <script>
+    function initMap() {
+    var service;
+
+    document.getElementById('get_location').addEventListener('click', function() {
+      // Geolocation APIに対応しているか
+      if (navigator.geolocation) {
+        // 現在地を取得
+        navigator.geolocation.getCurrentPosition(
+
+          // 取得成功した場合
+          function(position) {
+            // 緯度・経度を変数に格納
+            var mapLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            // マップオプションを変数に格納
+            var mapOptions = {
+              zoom : 15,          // 拡大倍率
+              center : mapLatLng  // 緯度・経度
+            };
+            // マップオブジェクト作成
+            var map = new google.maps.Map(
+              document.getElementById("map"), // マップを表示する要素
+              mapOptions         // マップオプション
+            );
+
+            var request = {
+                location: mapLatLng,
+                radius: '1500',   // 現在地からの半径
+                type: 'convenience_store' // お店のタイプ（既定のものから選択）
+            };
+            // type に色々設定することで、任意のカテゴリを検索することが可能です。（typesの値は https://developers.google.com/places/supported_types を参照）
+
+
+            service = new google.maps.places.PlacesService(map);
+            service.nearbySearch(request,callback)
+
+            function callback(results, status) {
+                if (status == google.maps.places.PlacesServiceStatus.OK) {
+                    //   STATUSがOKの場合
+                    for (var i = 0; i < results.length; i++) {
+                        new google.maps.Marker({
+                        map: map,
+                        position: results[i].geometry.location,
+                    });
+                    }
+                }
+            }
+        },
+
+          // 現在地の取得に失敗した場合
+          function(error) {
+            // エラーメッセージを表示
+            switch(error.code) {
+              case 1: // PERMISSION_DENIED
+                alert("位置情報の利用が許可されていません");
+                break;
+              case 2: // POSITION_UNAVAILABLE
+                alert("現在位置が取得できませんでした");
+                break;
+              case 3: // TIMEOUT
+                alert("タイムアウトになりました");
+                break;
+              default:
+                alert("その他のエラー(エラーコード:"+error.code+")");
+                break;
+            }
+          }
+        );
+      // Geolocation APIに対応していない
+      } else {
+        alert("この端末では位置情報が取得できません");
+      }
+    });
+    }
+  </script>
+  <style>
+    button{
+        margin-bottom: 16px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>現在地周辺のコンビニを表示</h1>
+  <button id="get_location"> 現在地を取得 </button>
+  <div id="map" style="width:400px; height:300px"></div>
+  <script src="https://maps.googleapis.com/maps/api/js?key=ここにAPIキーをいれる&libraries=places&callback=initMap"></script>
+</body>
+</html>

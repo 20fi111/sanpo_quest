@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    index
+{% endblock %}
+
+{% block main %}
+
+<style>
+  #map{
+    height: 100%;
+    position: absolute;
+	  top:76px; left:0; right:0; bottom:0;
+  }
+  button{
+    display:block;
+    position: relative;
+	  left:12px; top:12px;
+	  z-index: 1000;
+    margin:12px;
+  }
+  main{
+    height:100%;
+  }
+  body{
+    height:100%;
+  }
+  html{
+    height:100%;
+  }
+</style>
+
+<!-- ログイン後、トップページはマップ  -->
+<div id="map" ></div>
+
+<!-- ボタンの配置 右上に配置したいが。。。-->
+<button> デイリークエスト </button>
+<button> デイリークエスト </button>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=ここにAPIキーを入れる&callback=initMap" defer></script>
+<script src="/static/map.js"></script>
+
+{% endblock %}
+

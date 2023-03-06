@@ -45,6 +45,7 @@ def quest():
 def gacha():
     #ガチャ画面
     if request.method == "GET":
+        #ボタンと表示のページ
         return render_template("gacha.html")
 
     else:

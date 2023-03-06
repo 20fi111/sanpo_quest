@@ -56,7 +56,7 @@ def gacha():
         #ボタンと表示のページ
     return render_template("gacha.html")
 
-@app.route('/')
+@app.route('/run_gacha')
         random_choice()
 
         #データベースに結果を入れる

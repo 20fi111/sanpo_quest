@@ -51,6 +51,8 @@ def gacha():
         random_choice()
         print(choiceA,choiceB,choiceC)
 
+        return redirect("/")
+
 
 
 

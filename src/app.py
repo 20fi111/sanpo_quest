@@ -47,7 +47,7 @@ def gacha():
     if request.method == "GET":
         return render_template("gacha.html")
 
-     else:
+    else:
         random_choice()
         print(choiceA,choiceB,choiceC)
 
@@ -139,24 +139,25 @@ def register():
             rows = cur.execute("SELECT * FROM users WHERE username = ?", (user_id,))
             count = rows.fetchall()
 
-            if count == 1:
+            if len(count) == 1:
                 flash("この名前はすでに使われています")
                 return render_template("register.html")
 
-            #新規登録
-            password_hash = generate_password_hash(password)
-            cur.execute("INSERT INTO users (username, hash) VALUES(?, ?)", (user_id, password_hash))
-            conn.commit()
+            else:
+                #新規登録
+                password_hash = generate_password_hash(password)
+                cur.execute("INSERT INTO users (username, hash) VALUES(?, ?)", (user_id, password_hash))
+                conn.commit()
 
-            #データベース上のid取得
-            id = cur.execute("SELECT * FROM users WHERE username = ?", (user_id,))
+                #データベース上のid取得
+                id = cur.execute("SELECT * FROM users WHERE username = ?", (user_id,))
 
-            #ログイン
-            session["user_id"] = user_id[0][0]
+                #ログイン
+                session["user_id"] = user_id[0][0]
 
-            conn.close()
-            #メインページへリダイレクト
-            return redirect("/")
+                conn.close()
+                #メインページへリダイレクト
+                return redirect("/")
 
     else:
         return render_template("register.html")

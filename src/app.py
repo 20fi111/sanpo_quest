@@ -37,7 +37,16 @@ def index():
 @login_required
 def quest():
     #クエスト詳細画面
-    return redirect("/")
+    conn = sqlite3.connect("../db/gacha.db")
+    cur = conn.cursor()
+    #デイリークエスト
+    db = cur.execute("SELECT * FROM dailys WHERE boolean_clear = 0")
+    dailys = db.fetchall()
+    #メインクエスト
+    db2 = cur.execute("SELECT * FROM spots WHERE boolean_clear = 0")
+    spots = db2.fetchall()
+        
+    return render_template("quest.html", dailys=dailys)
 
 
 @app.route("/gacha",methods=["GET","POST"])
@@ -57,10 +66,6 @@ def gacha():
 
         #ガチャ画面に何かしらのカタチで表示
         return redirect("/")
-
-
-
-
 
 
 @app.route("/login", methods=["GET", "POST"])

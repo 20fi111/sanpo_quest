@@ -51,7 +51,7 @@ def gacha():
         random_choice()
 
         #データベースに結果を入れる
-        #gacha.dbの中に
+        #gacha.dbの中に結果テーブルを作る
         print(choiceA,choiceB,choiceC)
 
         #ガチャ画面に何かしらのカタチで表示

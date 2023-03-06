@@ -45,7 +45,7 @@ def quest():
     #メインクエスト
     db2 = cur.execute("SELECT * FROM spots WHERE boolean_clear = 0")
     spots = db2.fetchall()
-        
+
     return render_template("quest.html", dailys=dailys)
 
 
@@ -62,10 +62,10 @@ def gacha():
 
         #データベースに結果を入れる
         #gacha.dbの中に結果テーブルを作る
-        print(choiceA,choiceB,choiceC)
+
 
         #ガチャ画面に何かしらのカタチで表示
-        return redirect("/")
+        return render_template("result.html",choiceA,choiceB,choiceC)
 
 
 @app.route("/login", methods=["GET", "POST"])

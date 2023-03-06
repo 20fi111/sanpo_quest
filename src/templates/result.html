@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Quest
+    result.html
 {% endblock %}
 
 {% block main %}
@@ -14,18 +14,16 @@
     }
 </style>
 
-    {% for daily in dailys %}
-        <div>
-            <p></p>
-            <button>達成</button>
-        </div>
-    {% endfor %}
 
-    {% for spot in spots %}
+
+
         <div>
-            <p>{{ spot[0] }}</p>
-            <button>達成</button>
+            <p>{{ choiceA }}</p>
+            <p>{{ choiceB }}</p>
+            <p>{{ choiceC }}</p>
+
+
         </div>
-    {% endfor %}
+
 
 {% endblock %}

@@ -3,11 +3,11 @@
 import sqlite3
 
 def main():
-    conn = sqlite3.connect("db/gacha.db")
+    conn = sqlite3.connect("../db/gacha.db")
     cur = conn.cursor()
 
     #choice.txtを開く
-    with open("db/choice.txt", "r") as file:
+    with open("../db/choice.txt", "r") as file:
 
         #fileを行ごとに分割しリスト化する
         datalist = file.readlines()

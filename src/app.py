@@ -56,7 +56,7 @@ def gacha():
     #ボタンと表示のページ
     return render_template("gacha.html")
 
-@app.route('/run_gacha',methods=['POST'])
+@app.route("/run_gacha",methods=["POST"])
 @login_required
 def run_gacha():
         #ガチャの実行

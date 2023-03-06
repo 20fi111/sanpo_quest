@@ -71,6 +71,7 @@ def run_gacha():
 
 
         return render_template("result.html",choiceA=choiceA,choiceB=choiceB,choiceC=choiceC)
+        .format(choiceA,choiceB,choiceC)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():

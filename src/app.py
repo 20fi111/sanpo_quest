@@ -43,8 +43,8 @@ def quest():
 @login_required
 def gacha():
     #ガチャ画面
-    
-    return redirect("/")
+    if request.method == "GET"
+    return render_template("")
 
 
 @app.route("/login", methods=["GET", "POST"])

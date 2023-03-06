@@ -53,11 +53,10 @@ def quest():
 @login_required
 def gacha():
     #ガチャ画面
-    if request.method == "GET":
         #ボタンと表示のページ
-        return render_template("gacha.html")
+    return render_template("gacha.html")
 
-    else:
+@app.route('/')
         random_choice()
 
         #データベースに結果を入れる

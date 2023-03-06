@@ -6,7 +6,7 @@ import pandas as pd
 def get_all_item():
 
     # データベースに接続
-    conn = sqlite3.connect("../db/gacha.db")
+    conn = sqlite3.connect("db/gacha.db")
     conn.row_factory = sqlite3.Row
     cur = conn.cursor()
     cur.execute("select * from gachas")

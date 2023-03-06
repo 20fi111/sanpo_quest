@@ -31,9 +31,8 @@ def random_choice():
     choiceC = three_choices[2]
 
 
-
+    print(choiceA,choiceB,choiceC)
     return choiceA,choiceB,choiceC
 
 # 一連の動作が行われるか確認のため呼び出し
 random_choice()
-print(choiceA,choiceB,choiceC)

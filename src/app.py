@@ -48,6 +48,9 @@ def gacha():
         return render_template("gacha.html")
 
      else:
+        random_choice()
+        print(choiceA,choiceB,choiceC)
+
 
 
 

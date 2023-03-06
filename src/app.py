@@ -45,12 +45,17 @@ def quest():
 def gacha():
     #ガチャ画面
     if request.method == "GET":
+        #ボタンと表示のページ
         return render_template("gacha.html")
 
     else:
         random_choice()
+
+        #データベースに結果を入れる
+        #gacha.dbの中に結果テーブルを作る
         print(choiceA,choiceB,choiceC)
 
+        #ガチャ画面に何かしらのカタチで表示
         return redirect("/")
 
 

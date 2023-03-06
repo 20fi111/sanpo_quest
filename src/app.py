@@ -3,6 +3,7 @@ from functools import wraps
 import sqlite3
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_session import Session
+from gacha import random_choice,get_all_item
 
 app = Flask(__name__)
 
@@ -47,7 +48,7 @@ def gacha():
         return render_template("gacha.html")
 
      else:
-        
+
 
 
 

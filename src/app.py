@@ -3,6 +3,7 @@ from functools import wraps
 import sqlite3
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_session import Session
+from gacha import random_choice,get_all_item
 
 app = Flask(__name__)
 
@@ -39,11 +40,22 @@ def quest():
     return redirect("/")
 
 
-@app.route("/gacha")
+@app.route("/gacha",methods=["GET","POST"])
 @login_required
 def gacha():
     #ガチャ画面
-    return redirect("/")
+    if request.method == "GET":
+        return render_template("gacha.html")
+
+     else:
+        random_choice()
+        print(choiceA,choiceB,choiceC)
+
+        return redirect("/")
+
+
+
+
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -65,7 +77,7 @@ def login():
         elif not password:
             flash("パスワードを入力してください")
             return render_template("login.html")
-        
+
         else:
             #データベースからIDを検索し、パスワードが正しいか確認する
             conn = sqlite3.connect("../db/gacha.db")
@@ -76,14 +88,14 @@ def login():
             if  len(count) != 1 or not check_password_hash(count[0][2], password):
                 flash("IDもしくはパスワードが違います")
                 return render_template("login.html")
-        
+
             #ログイン
             session["user_id"] = count[0][0]
 
             conn.close()
         #メインページへリダイレクト
         return redirect("/")
-    
+
     else:
         return render_template("login.html")    #login.html
 
@@ -119,7 +131,7 @@ def register():
         elif password != confirmation:
             flash("2つのパスワードが異なっています")
             return render_template("register.html")
-        
+
         else:
             #データベースに接続
             conn = sqlite3.connect("../db/gacha.db")
@@ -145,7 +157,7 @@ def register():
             conn.close()
             #メインページへリダイレクト
             return redirect("/")
-    
+
     else:
         return render_template("register.html")
 

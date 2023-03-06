@@ -6,14 +6,13 @@ import pandas as pd
 def get_all_item():
 
     # データベースに接続
-    conn = sqlite3.connect("gacha.db")
+    conn = sqlite3.connect("db/gacha.db")
     conn.row_factory = sqlite3.Row
     cur = conn.cursor()
     cur.execute("select * from gachas")
     result = [dict(row) for row in cur.fetchall()]
 
-    # 動作確認のprint、アプリの機能には関係ないのでのちに削除
-    print(result)
+
 
     conn.close()
     return result
@@ -26,15 +25,12 @@ def random_choice():
     todays_choice = [d.get('choice') for d in choices]
     three_choices = random.sample(todays_choice,3)
 
-    # 動作確認のprint、アプリの機能には関係ないのでのちに削除
-    print(three_choices)
 
     choiceA = three_choices[0]
     choiceB = three_choices[1]
     choiceC = three_choices[2]
 
-    # 動作確認のprint、アプリの機能には関係ないのでのちに削除
-    print(choiceA,choiceB,choiceC)
+    
 
     return choiceA,choiceB,choiceC
 

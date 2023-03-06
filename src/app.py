@@ -29,7 +29,7 @@ def login_required(f):
 @login_required
 def index():
     #ホームページ
-    return redirect("/")
+    return render_template("index.html")
 
 
 @app.route("/quest")
@@ -95,7 +95,7 @@ def logout():
     return redirect("/")
 
 
-@app.route("/register")
+@app.route("/register", methods=["GET", "POST"])
 def register():
     #新規登録画面
     if request.method == "POST":

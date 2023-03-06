@@ -51,6 +51,7 @@ def gacha():
         random_choice()
         print(choiceA,choiceB,choiceC)
 
+        #ガチャ画面に何かしらのカタチで表示
         return redirect("/")
 
 

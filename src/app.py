@@ -49,6 +49,9 @@ def gacha():
 
     else:
         random_choice()
+
+        #データベースに結果を入れる
+        #gacha.dbの中に
         print(choiceA,choiceB,choiceC)
 
         #ガチャ画面に何かしらのカタチで表示

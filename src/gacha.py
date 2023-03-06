@@ -6,7 +6,7 @@ import pandas as pd
 def get_all_item():
 
     # データベースに接続
-    conn = sqlite3.connect("db/gacha.db")
+    conn = sqlite3.connect("../db/gacha.db")
     conn.row_factory = sqlite3.Row
     cur = conn.cursor()
     cur.execute("select * from gachas")
@@ -30,9 +30,10 @@ def random_choice():
     choiceB = three_choices[1]
     choiceC = three_choices[2]
 
-    
+
 
     return choiceA,choiceB,choiceC
 
 # 一連の動作が行われるか確認のため呼び出し
 random_choice()
+print(choiceA,choiceB,choiceC)

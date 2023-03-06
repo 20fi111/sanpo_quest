@@ -47,7 +47,7 @@ def gacha():
     if request.method == "GET":
         return render_template("gacha.html")
 
-     else:
+    else:
         random_choice()
         print(choiceA,choiceB,choiceC)
 

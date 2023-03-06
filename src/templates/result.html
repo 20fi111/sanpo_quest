@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quest
+{% endblock %}
+
+{% block main %}
+
+<style>
+
+    div{
+        display: flex;
+        justify-content: center;
+    }
+</style>
+
+    {% for daily in dailys %}
+        <div>
+            <p></p>
+            <button>達成</button>
+        </div>
+    {% endfor %}
+
+    {% for spot in spots %}
+        <div>
+            <p>{{ spot[0] }}</p>
+            <button>達成</button>
+        </div>
+    {% endfor %}
+
+{% endblock %}

@@ -68,9 +68,9 @@ def run_gacha():
 
         #ガチャ画面に何かしらのカタチで表示
 
-        print(choiceA,choiceB,choiceC)
 
-        return choiceA,choiceB,choiceC
+
+        return render_template("result.html",choiceA,choiceB,choiceC)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():

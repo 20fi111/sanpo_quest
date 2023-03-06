@@ -57,6 +57,9 @@ def gacha():
     return render_template("gacha.html")
 
 @app.route('/run_gacha')
+@login_required
+def run_gacha():
+        #ガチャの実行
         random_choice()
 
         #データベースに結果を入れる
@@ -64,7 +67,8 @@ def gacha():
 
 
         #ガチャ画面に何かしらのカタチで表示
-        return render_template("result.html",choiceA,choiceB,choiceC)
+        print(choiceA,choiceB,choiceC)
+        return render_template("result.html",)
 
 
 @app.route("/login", methods=["GET", "POST"])

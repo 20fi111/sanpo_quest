@@ -60,7 +60,7 @@ def gacha():
 @login_required
 def run_gacha():
         #ガチャの実行
-        random_choice()
+        daily = random_choice()
 
         #データベースに結果を入れる
         #gacha.dbの中に結果テーブルを作る
@@ -70,8 +70,8 @@ def run_gacha():
 
 
 
-        return render_template("result.html",choiceA=choiceA,choiceB=choiceB,choiceC=choiceC)
-        
+        return render_template("result.html",choiceA=daily[0],choiceB=daily[1],choiceC=daily[2])
+
 
 @app.route("/login", methods=["GET", "POST"])
 def login():

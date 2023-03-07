@@ -66,8 +66,7 @@ def run_gacha():
         #gacha.dbの中に結果テーブルを作る
 
 
-        cur.execute("UPDATE dailys SET choice = ?",daily[0],daily[1],daily[2])
-        flash("今日のクエスト！")
+        
 
 
 

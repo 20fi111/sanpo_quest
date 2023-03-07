@@ -64,6 +64,16 @@ def run_gacha():
 
         #データベースに結果を入れる
         #gacha.dbの中に結果テーブルを作る
+        uptd_work = request.form.get("work")
+        uptd_current_status = request.form.get("current_status")
+        uptd_more = request.form.get("more")
+        uptd_date = datetime.datetime.now()
+        user_id= session["user_id"]
+
+
+        db.execute("UPDATE  SET work = ?, current_status = ?, more = ?, date = ? WHERE id = ?",uptd_work,uptd_current_status,uptd_more,uptd_date,user_id)
+        flash("更新されました！")
+        return redirect("/")
 
 
         #ガチャ画面に何かしらのカタチで表示

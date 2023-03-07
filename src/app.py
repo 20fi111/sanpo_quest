@@ -71,7 +71,7 @@ def run_gacha():
         user_id= session["user_id"]
 
 
-        db.execute("UPDATE  SET work = ?, current_status = ?, more = ?, date = ? WHERE id = ?",uptd_work,uptd_current_status,uptd_more,uptd_date,user_id)
+        db.execute("UPDATE dailys SET work = ?, current_status = ?, more = ?, date = ? WHERE id = ?",uptd_work,uptd_current_status,uptd_more,uptd_date,user_id)
         flash("更新されました！")
         return redirect("/")
 

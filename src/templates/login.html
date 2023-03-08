@@ -8,27 +8,23 @@
     <style>
         /* とりあえずここに書いておきます、最終的にはstyle.cssへ */
         #login_form{
-            padding:64px;
+            padding:32px;
         }
         #login{
-            font-size: 20px;
+            font-size: 28px;
             margin-bottom:24px;
             margin-top:24px;
         }
         #new_register{
-            padding:64px;
+            padding:32px;
             /* border:2px solid black; */
-        }
-        img{
-            border:2px solid black;
-            border-radius:50%;
         }
 
     </style>
     <div id="login_form">
         <!-- 画像はstaticフォルダ内でないと反映されない？ -->
-        <img src="/static/img/home.png" width="128" height="128">
-        <p id="login"> ログイン </p>
+        <img src="../static/images/sanpologo.png" width="200" height="auto">
+        <h1 id="login"> ログイン </h1>
 
         <form action="/login" method="post">
             <div class="mb-3">
@@ -37,14 +33,13 @@
             <div class="mb-3">
                 <input class="form-control mx-auto w-auto" id="password" name="password" placeholder="パスワード" type="password">
             </div>
-            <button class="btn btn-primary" type="submit">ログイン</button>
+            <button class="btn button-important" type="submit">ログイン</button>
         </form>
     </div>
-
-
+    <hr style="border: solid 1px rgb(107, 107, 107); width: 240px; margin:auto;">
     <div id="new_register">
         <form action="/register" method="get">
-            <button type="submit">新規会員登録</button>
+            <button class="btn button-register" type="submit">新規会員登録</button>
         </form>
     </div>
 {% endblock %}

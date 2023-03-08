@@ -1,3 +1,6 @@
+html{
+    font-size:62.5%;
+}
 .button-normal{
     background-color: #99ffff;
 }
@@ -10,4 +13,25 @@
 .button-register{
     color: #fff;
     background-color: #040036;
+}
+
+#login_form{
+    padding:32px;
+}
+#login{
+    font-size: 28px;
+    margin-bottom:24px;
+    margin-top:24px;
+}
+#new_register{
+    padding:32px;
+    /* border:2px solid black; */
+}
+
+#login_back{
+    padding:32px;
+}
+
+#register_form{
+    padding:32px;
 }

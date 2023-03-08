@@ -24,17 +24,7 @@
         {% if session["user_id"] %}
         <nav class="bg-light border navbar navbar-expand-md navbar-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/"><img src="../static/images/sanpologo.png" width="160px" height="auto"></a>
-                <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbar" data-bs-toggle="collapse" type="button">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbar">
-
-                        <ul class="navbar-nav me-auto mt-2">
-                            <li class="nav-item"><a class="nav-link" href="/quest">クエスト</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/gacha">ガチャ</a></li>
-
-                        </ul>
+                <a class="navbar-brand" href="/"><img src="../static/images/sanpologo.png" style="width:auto; height:4.8rem"></a>
                         <ul class="navbar-nav ms-auto mt-2">
                             <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
                         </ul>
@@ -58,7 +48,8 @@
         </main>
 
         <footer class="mb-5 small text-center text-muted">
-
+            <a href="/quest"><img src="../static/images/quests.png" width="48px"></a>
+            <a href="/gacha"><img src="../static/images/gacha.png" width="48px"></a>
         </footer>
 
     </body>

@@ -67,10 +67,7 @@ def run_gacha():
 
         #データベースに結果を入れる
         #gacha.dbの中に結果テーブルを作る
-        conn = sqlite3.connect("../db/gacha.db")
-        cur = conn.cursor()
-        cur.execute("UPDATE choices SET choiceA = ?, choiceB = ?, choiceC = ?",choiceA,choiceB,choiceC)
-
+        
         #ガチャ画面に何かしらのカタチで表示
         return render_template("result.html",choiceA,choiceB,choiceC)
 

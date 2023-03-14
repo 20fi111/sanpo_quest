@@ -71,7 +71,7 @@ def run_gacha():
 
         conn = sqlite3.connect("../db/gacha.db")
         cur = conn.cursor()
-        cur.executemany("INSERT INTO choices (choiceA, choiceB, choiceC) VALUES(?,?,?)",(choiceA,choiceB,choiceC))
+        cur.execute("UPDATE choices (choiceA, choiceB, choiceC) VALUES(?,?,?)",(choiceA,choiceB,choiceC))
         conn.commit()
         conn.close()
 

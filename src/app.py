@@ -61,10 +61,13 @@ def gacha():
 def run_gacha():
         #ガチャの実行
         daily = random_choice()
+        choiceA=daily[0]
+        choiceB=daily[1]
+        choiceC=daily[2]
 
         #データベースに結果を入れる
         #gacha.dbの中に結果テーブルを作る
-        db.execute("UPDATE gacha.choices SET choiceA = ?, choiceB = ?, choiceC = ?",uptd_work,uptd_current_status,uptd_more,uptd_date,user_id)
+        db.execute("UPDATE gacha.choices SET choiceA = ?, choiceB = ?, choiceC = ?",choiceA,choiceB,choiceC)
 
 
 
@@ -75,7 +78,7 @@ def run_gacha():
 
 
 
-        return render_template("result.html",choiceA=daily[0],choiceB=daily[1],choiceC=daily[2])
+        return render_template("result.html",choiceA,choiceB,choiceC)
 
 
 @app.route("/login", methods=["GET", "POST"])

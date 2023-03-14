@@ -72,11 +72,14 @@ def run_gacha():
         conn = sqlite3.connect("../db/gacha.db")
         cur = conn.cursor()
         cur.executemany("INSERT INTO choices (choiceA, choiceB, choiceC) VALUES(?,?,?)",(choiceA,choiceB,choiceC))
+        conn.commit()
+        conn.close()
 
 
 
         #ガチャ画面に何かしらのカタチで表示
         return render_template("result.html",choiceA=choiceA,choiceB=choiceB,choiceC=choiceC)
+
 
 
 @app.route("/login", methods=["GET", "POST"])

@@ -71,7 +71,7 @@ def run_gacha():
 
         conn = sqlite3.connect("../db/gacha.db")
         cur = conn.cursor()
-        cur.execute("UPDATE choices SET choiceA = ?, choiceB = ?, choiceC = ? WHERE id = 0",choiceA,choiceB,choiceC)
+        cur.execute("INSERT INTO choices choiceA = ?, choiceB = ?, choiceC = ? WHERE id = 0",choiceA,choiceB,choiceC)
 
 
         #ガチャ画面に何かしらのカタチで表示

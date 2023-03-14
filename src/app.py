@@ -64,9 +64,10 @@ def run_gacha():
 
         #データベースに結果を入れる
         #gacha.dbの中に結果テーブルを作る
+        db.execute("UPDATE gacha.choices SET choiceA = ?, choiceB = ?, choiceC = ?",uptd_work,uptd_current_status,uptd_more,uptd_date,user_id)
 
 
-        
+
 
 
 

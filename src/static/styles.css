@@ -95,7 +95,8 @@ main{
 }
 
 .dailyquest{
-    display:block;
+    display:flex;
+    justify-content:space-between;
     filter:drop-shadow(0.4rem 0.4rem 0.4rem #505050);
     width: 20%;
     min-width: 28rem;
@@ -112,6 +113,19 @@ main{
     -webkit-transform: skew(-10deg);
     font-weight: bold;
   }
+
+  .dailyquest label{
+    padding: 0.8rem;
+    color:#fff;
+    -webkit-transform: skew(-10deg);
+    font-size: 1.8rem;
+    font-weight:bold;
+  }
+
+  .dailyquest button{
+    -webkit-transform: skew(-10deg);
+  }
+
 
 .dailyquest_home{
     display:block;

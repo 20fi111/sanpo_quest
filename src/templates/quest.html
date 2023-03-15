@@ -16,8 +16,9 @@
 
     {% for daily in dailys %}
         <form action="/quest" method="POST">
-            <div>
-                <input type="submit" value="{{ daily[1] }}" name="{{ daily[1] }}">
+            <div class="dailyquest">
+                <label for="{{ daily[0] }}">{{ daily[1] }}</label>
+                <button class="btn button-important" name="{{ daily[0] }}">達成</button>
             </div>
         </form>
     {% endfor %}

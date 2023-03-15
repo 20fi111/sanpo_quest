@@ -33,7 +33,7 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/quest")
+@app.route("/quest", methods=["GET", "POST"])
 @login_required
 def quest():
     #クエスト詳細画面
@@ -42,11 +42,23 @@ def quest():
     #デイリークエスト
     db = cur.execute("SELECT * FROM dailys WHERE boolean_clear = 0")
     dailys = db.fetchall()
+    db2 = cur.execute("SELECT * FROM dailys WHERE boolean_clear = 1")
+    achive_dailys = db2.fetchall()
     #メインクエスト
     db2 = cur.execute("SELECT * FROM spots WHERE boolean_clear = 0")
     spots = db2.fetchall()
 
     return render_template("quest.html", dailys=dailys)
+
+
+@app.route("/achieve_quest/<str:choice>")
+@login_required
+def achive_quest(choice):
+    conn = sqlite3.connect("../db/gacha.db")
+    cur = conn.cursor()
+    cur.execute("UPDATE dailys SET boolean_clear = 1 WHERE choice = ?", (choice, ))
+    cur.commit()
+    return redirect("/quest")
 
 
 @app.route("/gacha",methods=["GET","POST"])

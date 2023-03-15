@@ -14,12 +14,15 @@
     }
 </style>
     
-    {% for daily in dailys %} 
-        <div>     
-            <p>{{ daily[0] }}</p>
-            <button>達成</button>
-        </div>       
+    {% for daily in dailys %}
+        <form action="/quest" method="POST">
+            <div>     
+                <input type="submit" value="{{ daily[1] }}" name="{{ daily[1] }}">
+            </div>
+        </form>
     {% endfor %}
+
+
 
     {% for spot in spots %}
         <div>

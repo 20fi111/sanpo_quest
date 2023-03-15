@@ -40,25 +40,14 @@ def quest():
     conn = sqlite3.connect("../db/gacha.db")
     cur = conn.cursor()
     #デイリークエスト
-    db = cur.execute("SELECT * FROM dailys WHERE boolean_clear = 0")
+    db = cur.execute("SELECT * FROM dailys")
     dailys = db.fetchall()
-    db2 = cur.execute("SELECT * FROM dailys WHERE boolean_clear = 1")
-    achive_dailys = db2.fetchall()
+
     #メインクエスト
     db2 = cur.execute("SELECT * FROM spots WHERE boolean_clear = 0")
     spots = db2.fetchall()
 
     return render_template("quest.html", dailys=dailys)
-
-
-@app.route("/achieve_quest/<str:choice>")
-@login_required
-def achive_quest(choice):
-    conn = sqlite3.connect("../db/gacha.db")
-    cur = conn.cursor()
-    cur.execute("UPDATE dailys SET boolean_clear = 1 WHERE choice = ?", (choice, ))
-    cur.commit()
-    return redirect("/quest")
 
 
 @app.route("/gacha",methods=["GET","POST"])
@@ -73,20 +62,42 @@ def gacha():
 def run_gacha():
         #ガチャの実行
         daily = random_choice()
+        choiceA=daily[0]
+        choiceB=daily[1]
+        choiceC=daily[2]
+
 
         #データベースに結果を入れる
-        #gacha.dbの中に結果テーブルを作る
+        #gacha.dbの中のchoicesを更新
+
+        conn = sqlite3.connect("../db/gacha.db")
+        cur = conn.cursor()
+        count1 = cur.execute("SELECT COUNT (*) FROM dailys WHERE id = 1")
+        if count1.fetchone()[0] >= 1:
+            cur.execute("UPDATE dailys SET choice=? WHERE id = 1", (choiceA, ))
+        else:
+            cur.execute("INSERT INTO dailys (choice) VALUES (?)", (choiceA, ))
+
+        count2 = cur.execute("SELECT COUNT (*) FROM dailys WHERE id = 2")
+        if count2.fetchone()[0] >= 1:
+            cur.execute("UPDATE dailys SET choice=? WHERE id = 2", (choiceB, ))
+        else:
+            cur.execute("INSERT INTO dailys (choice) VALUES (?)", (choiceB, ))
+
+        count3 = cur.execute("SELECT COUNT (*) FROM dailys WHERE id = 3")
+        if count3.fetchone()[0] >= 1:
+            cur.execute("UPDATE dailys SET choice=? WHERE id = 3", (choiceC, ))
+        else:
+            cur.execute("INSERT INTO dailys (choice) VALUES (?)", (choiceC, ))
+
+        conn.commit()
+        conn.close()
 
 
-        
 
+        #ガチャ結果画面に表示
+        return render_template("result.html",choiceA=choiceA,choiceB=choiceB,choiceC=choiceC)
 
-
-        #ガチャ画面に何かしらのカタチで表示
-
-
-
-        return render_template("result.html",choiceA=daily[0],choiceB=daily[1],choiceC=daily[2])
 
 
 @app.route("/login", methods=["GET", "POST"])

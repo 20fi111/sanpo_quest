@@ -1,10 +1,11 @@
-html{
+html {
     font-size:62.5%;
     height:100%;
 }
 
-body{
-    height:100%;
+body {
+    height: 100%;
+    margin: 0;
     background-image:url(../static/images/background.jpg);
     background-size: contain;
   }
@@ -21,9 +22,26 @@ p{
     font-size:1.6rem;
 }
 
+nav{
+    position: sticky;
+    top:0;
+    z-index:2000;
+    background-color:#040036;
+}
+
 footer{
+    display:flex;
+    position:relative;
+    justify-content:space-around;
+    position: sticky;
+    bottom:0%;
+    z-index:2000;
     background-color:#040036;
     padding: 0.4rem;
+}
+
+main{
+    height:100%;
 }
 
 .button-normal{
@@ -64,9 +82,58 @@ footer{
 }
 
 #gacha{
-    padding:2.4rem;
+    padding:3rem;
 }
 
 #gacha button{
     font-size: 3.2rem;
 }
+
+#reload{
+    position:absolute;
+    bottom:2.4rem;
+}
+
+.dailyquest{
+    display:block;
+    filter:drop-shadow(0.4rem 0.4rem 0.4rem #505050);
+    width: 20%;
+    min-width: 28rem;
+    max-width: 60rem;
+    margin: auto;
+    margin-top:2.4rem;
+    background: linear-gradient(#99ffff,70%,#6464e0);
+    border-radius: 0.8rem;
+    -webkit-transform: skew(10deg);
+  }
+  .dailyquest p{
+    padding: 0.6rem;
+    color:#fff;
+    -webkit-transform: skew(-10deg);
+    font-weight: bold;
+  }
+
+.dailyquest_home{
+    display:block;
+    filter:drop-shadow(0.4rem 0.4rem 0.4rem #505050);
+    width: 20%;
+    min-width: 16rem;
+    max-width: 60rem;
+    margin: 1.2rem;
+    background: linear-gradient(#99ffff,70%,#6464e0);
+    border-radius: 0.8rem;
+    -webkit-transform: skew(10deg);
+  }
+  .dailyquest_home p{
+    padding: 0.6rem;
+    color:#fff;
+    -webkit-transform: skew(-10deg);
+    font-weight: bold;
+  }
+
+  .no_scroll{
+    position:fixed;
+    left:0;
+    right:0;
+    overflow:hidden;
+  }

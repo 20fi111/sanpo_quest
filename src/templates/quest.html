@@ -7,16 +7,16 @@
 {% block main %}
 
 <style>
-    
+
     div{
         display: flex;
         justify-content: center;
     }
 </style>
-    
+
     {% for daily in dailys %}
         <form action="/quest" method="POST">
-            <div>     
+            <div>
                 <input type="submit" value="{{ daily[1] }}" name="{{ daily[1] }}">
             </div>
         </form>
@@ -30,5 +30,11 @@
             <button>達成</button>
         </div>
     {% endfor %}
+
+{% endblock %}
+
+{% block footer %}
+
+    <a href="/"><img src="../static/images/home.png" style="width:4.8rem;"></a>
 
 {% endblock %}

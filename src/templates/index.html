@@ -13,7 +13,7 @@
   #map{
     height: 80%;
     position: absolute;
-	  top:6rem; left:0; right:0;
+	  top:7rem; left:0; right:0;
     z-index: 0;
   }
   #kensaku{
@@ -34,18 +34,22 @@
     position: absolute;
     top:120px;
     z-index: 2000;
-    height:100px;
+    height:8rem;
     width:150px;
   }
-  .quest_button{
+  .dailyquest{
     display:block;
     width: 20%;
-    min-width: 150px;
-    max-width: 600px;
-    padding: 8px;
-    margin:12px;
-    background-color: paleturquoise;
-    border:1px solid blue;
+    min-width: 16rem;
+    max-width: 60rem;
+    margin: 1.2rem;
+    background: linear-gradient(#99ffff,85%,#040080);
+    border-radius: 0.8rem;
+    -webkit-transform: skew(10deg);
+  }
+  .dailyquest p{
+    padding: 0.6rem;
+    -webkit-transform: skew(-10deg);
     font-weight: bold;
   }
   #get_location{
@@ -57,12 +61,6 @@
   main{
     height:80%;
   }
-  body{
-    height:100%;
-  }
-  html{
-    height:100%;
-  }
   input{
     display:block;
     margin:auto;
@@ -72,10 +70,8 @@
 <div id="map"></div>
 
 
-<div id="button_container"> 
-  <button class="quest_button"> デイリークエスト </button>
-  <button class="quest_button"> デイリークエスト </button>
-  <button class="quest_button"> デイリークエスト </button>
+<div id="button_container">
+  <div class="dailyquest"><p>デイリークエスト</p></div>
 </div>
 <div id="kensaku">
   <input type="text" id="keyword" autocomplete="off"> </input>

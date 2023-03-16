@@ -50,21 +50,37 @@ def quest():
     dailys = db.fetchall()
 
     #メインクエスト
-    db2 = cur.execute("SELECT * FROM spots WHERE boolean_clear = 0")
+    db2 = cur.execute("SELECT * FROM spots")
     spots = db2.fetchall()
 
-    return render_template("quest.html", dailys=dailys)
+    return render_template("quest.html", dailys=dailys, spots=spots)
 
 
-@app.route("/achieve_quest", methods=["GET", "POST"])
+@app.route("/achieve_daily_quest", methods=["GET", "POST"])
 @login_required
-def achieve_quest():
+def achieve_daily_quest():
     if request.method == "POST":
         id = request.form.get("id")
         conn = sqlite3.connect("../db/gacha.db")
         cur = conn.cursor()
         cur.execute("UPDATE dailys SET boolean_clear = 1 WHERE id = ?", (id, ))
+        
+        conn.commit()
+        conn.close()
+        return redirect("/quest")
 
+
+@app.route("/achieve_spot_quest", methods=["GET", "POST"])
+@login_required
+def achieve_spot_quest():
+    if request.method == "POST":
+        id = request.form.get("id")
+        conn = sqlite3.connect("../db/gacha.db")
+        cur = conn.cursor()
+        cur.execute("UPDATE spots SET boolean_clear = 1 WHERE id = ?", (id, ))
+
+        conn.commit()
+        conn.close()
         return redirect("/quest")
 
 

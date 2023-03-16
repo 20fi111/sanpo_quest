@@ -15,7 +15,7 @@
 </style>
 
     {% for daily in dailys %}
-        <form action="/achieve_quest" method="POST">
+        <form action="/achieve_daily_quest" method="POST">
             <div class="dailyquest">
                 <label for="{{ daily[0] }}">{{ daily[1] }}</label>
                 <input type="hidden"  name="id" value="{{ daily[0] }}">
@@ -27,10 +27,13 @@
 
 
     {% for spot in spots %}
-        <div>
-            <p>{{ spot[0] }}</p>
-            <button>達成</button>
-        </div>
+        <form action="/achieve_spot_quest" method="POST">
+            <div class="dailyquest">
+                <label for="{{ spot[0] }}">{{ spot[1] }}</label>
+                <input type="hidden"  name="id" value="{{ spot[0] }}">
+                <button class="btn button-important" type="submit">達成</button>
+            </div>
+        </form>
     {% endfor %}
 
 {% endblock %}

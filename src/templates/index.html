@@ -6,7 +6,7 @@
 
 {% block main %}
 
-<script src="https://maps.googleapis.com/maps/api/js?key=ここにAPIキー&libraries=places&callback=initMap" defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=ここにAPIキーをいれる&libraries=places&callback=initMap" defer></script>
 <script src="/static/map.js"></script>
 
 <style>
@@ -47,12 +47,17 @@
 
 
 <div id="daily_container">
-  <div class="dailyquest_home"><p>デイリークエスト</p></div>
+  {% for daily in dailys %}
+  <div class="dailyquest_home"><p>{{ daily[1] }}</p></div>
+  {% endfor %}
 </div>
+
+
 <div id="kensaku">
   <input type="text" id="keyword" autocomplete="off"> </input>
    <button id="get_location">検索</button>
 </div>
+
 
 {% endblock %}
 

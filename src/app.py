@@ -30,7 +30,13 @@ def login_required(f):
 @login_required
 def index():
     #ホームページ
-    return render_template("index.html")
+    conn = sqlite3.connect("../db/gacha.db")
+    cur = conn.cursor()
+    #デイリークエストの表示
+    db = cur.execute("SELECT * FROM dailys")
+    dailys = db.fetchall()
+
+    return render_template("index.html",dailys=dailys)
 
 
 @app.route("/quest", methods=["GET", "POST"])

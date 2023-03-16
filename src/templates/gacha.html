@@ -6,12 +6,18 @@
 
 {% block main %}
 
-    <img src="../static/images/gacha.png" style="width:80%; height:auto;">
+    <img src="../static/images/gacha.png" style="width:90%; height:auto;">
 
 
     <form id="gacha" method="POST" action="/run_gacha">
             <button class="btn button-important" type="submit">ガチャを引く</button>
     </form>
 
+
+{% endblock %}
+
+{% block footer %}
+
+    <a href="/"><img src="../static/images/home.png" style="width:4.8rem;"></a>
 
 {% endblock %}

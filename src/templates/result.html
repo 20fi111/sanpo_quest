@@ -5,19 +5,17 @@
 {% endblock %}
 
 {% block main %}
+    <div class="no_scroll">
+        <h1>ガチャ結果</h1>
+        <div class="dailyquest"><p>{{ choiceA }}</p></div>
+        <div class="dailyquest"><p>{{ choiceB }}</p></div>
+        <div class="dailyquest"><p>{{ choiceC }}</p></div>
+    </div>
 
-<style>
+{% endblock %}
 
-    div{
-        display: flex;
-        justify-content: center;
-    }
-</style>
+{% block footer %}
 
-
-            <p>{{ choiceA }}</p>
-            <p>{{ choiceB }}</p>
-            <p>{{ choiceC }}</p>
-
+    <a href="/"><img src="../static/images/home.png" style="width:4.8rem;"></a>
 
 {% endblock %}

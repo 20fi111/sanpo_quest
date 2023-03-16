@@ -11,55 +11,31 @@
 
 <style>
   #map{
-    height: 80%;
+    height: 90%;
     position: absolute;
-	  top:7rem; left:0; right:0;
+	  top:0; left:0; right:0;
     z-index: 0;
   }
   #kensaku{
     display:block;
     position: relative;
-    top:80%;
-    left:12px;
+    top:60%;
+    left:1.2rem;
 	  z-index: 2000;
-    padding:12px;
+    padding:1.2rem;
     margin: auto;
-    height:80px;
-    width:150px;
+    height:8rem;
+    width:15rem;
     background-color: #FFC83C;
 
   }
-  #button_container{
+  #daily_container{
     display:block;
     position: absolute;
-    top:120px;
+    top:8rem;
     z-index: 2000;
     height:8rem;
-    width:150px;
-  }
-  .dailyquest{
-    display:block;
-    width: 20%;
-    min-width: 16rem;
-    max-width: 60rem;
-    margin: 1.2rem;
-    background: linear-gradient(#99ffff,85%,#040080);
-    border-radius: 0.8rem;
-    -webkit-transform: skew(10deg);
-  }
-  .dailyquest p{
-    padding: 0.6rem;
-    -webkit-transform: skew(-10deg);
-    font-weight: bold;
-  }
-  #get_location{
-    margin-top:20px;
-    border: solid 1px rgb(107, 107, 107);
-    background-color: rgb(107, 107, 107);
-    color:white;
-  }
-  main{
-    height:80%;
+    width:15rem;
   }
   input{
     display:block;
@@ -70,18 +46,29 @@
 <div id="map"></div>
 
 
+<<<<<<< HEAD
 <div id="button_container">
   {% for daily in dailys %}
 <div class="dailyquest"><p>{{ daily[1] }}</p></div>
   {% endfor %}
+=======
+<div id="daily_container">
+  <div class="dailyquest_home"><p>デイリークエスト</p></div>
+>>>>>>> 71de22a82b6240c85afda844d7ec946a290013f7
 </div>
 
 
 <div id="kensaku">
   <input type="text" id="keyword" autocomplete="off"> </input>
-  <button id="get_location"> 検索 </button>
+   <button id="get_location">検索</button>
 </div>
 
+
+{% endblock %}
+
+{% block footer %}
+
+    <img id="reload" src="../static/images/reload.png" style="width:4.8rem;" onClick="initMap()">
 
 {% endblock %}
 

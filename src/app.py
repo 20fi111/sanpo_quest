@@ -50,6 +50,18 @@ def quest():
     return render_template("quest.html", dailys=dailys)
 
 
+@app.route("/achieve_quest", methods=["GET", "POST"])
+@login_required
+def achieve_quest():
+    if request.method == "POST":
+        id = request.form.get("id")
+        conn = sqlite3.connect("../db/gacha.db")
+        cur = conn.cursor()
+        cur.execute("UPDATE dailys SET boolean_clear = 1 WHERE id = ?", (id, ))
+
+        return redirect("/quest")
+
+
 @app.route("/gacha",methods=["GET","POST"])
 @login_required
 def gacha():

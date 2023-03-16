@@ -15,7 +15,7 @@
 </style>
 
     {% for daily in dailys %}
-        <form action="/quest" method="POST">
+        <form action="/achieve_quest" method="POST">
             <div class="dailyquest">
                 <label for="{{ daily[0] }}">{{ daily[1] }}</label>
                 <input type="hidden"  name="id" value="{{ daily[0] }}">

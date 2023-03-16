@@ -18,7 +18,8 @@
         <form action="/quest" method="POST">
             <div class="dailyquest">
                 <label for="{{ daily[0] }}">{{ daily[1] }}</label>
-                <button class="btn button-important" name="{{ daily[0] }}">達成</button>
+                <input type="hidden"  name="id" value="{{ daily[0] }}">
+                <button class="btn button-important" type="submit">達成</button>
             </div>
         </form>
     {% endfor %}

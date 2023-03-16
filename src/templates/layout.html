@@ -22,11 +22,15 @@
 
     <body>
         {% if session["user_id"] %}
-        <nav class="bg-light border navbar navbar-expand-md navbar-light">
+        <nav class="button-register border navbar navbar-expand-md navbar-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/"><img src="../static/images/sanpologo.png" style="width:auto; height:4.8rem"></a>
+                <a class="navbar-brand" href="/"><img src="../static/images/sanpologo.png" style="width:auto; height:5.6rem"></a>
                         <ul class="navbar-nav ms-auto mt-2">
-                            <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
+                            <li class="nav-item">
+                                <form action="/logout">
+                                    <button class="btn button-important" type="submit">ログアウト</button>
+                                </form>
+                            </li>
                         </ul>
                     {% else %}
 
@@ -46,11 +50,12 @@
         <main class="container-fluid py-5 text-center">
             {% block main %}{% endblock %}
         </main>
-
+        {% if session["user_id"] %}
         <footer class="mb-5 small text-center text-muted">
-            <a href="/quest"><img src="../static/images/quests.png" width="48px"></a>
-            <a href="/gacha"><img src="../static/images/gacha.png" width="48px"></a>
+            <a href="/quest"><img src="../static/images/quests_footer.png" style="width:4.8rem;"></a>
+            <a href="/gacha"><img src="../static/images/gacha_footer.png" style="width:4.8rem;"></a>
         </footer>
+        {% endif %}
 
     </body>
 

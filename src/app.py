@@ -30,18 +30,25 @@ def login_required(f):
 @login_required
 def index():
     #ホームページ
-    return render_template("index.html")
+    conn = sqlite3.connect("../db/gacha.db")
+    cur = conn.cursor()
+    #デイリークエストの表示
+    db = cur.execute("SELECT * FROM dailys")
+    dailys = db.fetchall()
+
+    return render_template("index.html",dailys=dailys)
 
 
-@app.route("/quest")
+@app.route("/quest", methods=["GET", "POST"])
 @login_required
 def quest():
     #クエスト詳細画面
     conn = sqlite3.connect("../db/gacha.db")
     cur = conn.cursor()
     #デイリークエスト
-    db = cur.execute("SELECT * FROM dailys WHERE boolean_clear = 0")
+    db = cur.execute("SELECT * FROM dailys")
     dailys = db.fetchall()
+
     #メインクエスト
     db2 = cur.execute("SELECT * FROM spots WHERE boolean_clear = 0")
     spots = db2.fetchall()
@@ -71,7 +78,24 @@ def run_gacha():
 
         conn = sqlite3.connect("../db/gacha.db")
         cur = conn.cursor()
-        cur.execute("UPDATE choices SET choiceA=?, choiceB=?, choiceC=? WHERE id = 1",(choiceA,choiceB,choiceC))
+        count1 = cur.execute("SELECT COUNT (*) FROM dailys WHERE id = 1")
+        if count1.fetchone()[0] >= 1:
+            cur.execute("UPDATE dailys SET choice=? WHERE id = 1", (choiceA, ))
+        else:
+            cur.execute("INSERT INTO dailys (choice) VALUES (?)", (choiceA, ))
+
+        count2 = cur.execute("SELECT COUNT (*) FROM dailys WHERE id = 2")
+        if count2.fetchone()[0] >= 1:
+            cur.execute("UPDATE dailys SET choice=? WHERE id = 2", (choiceB, ))
+        else:
+            cur.execute("INSERT INTO dailys (choice) VALUES (?)", (choiceB, ))
+
+        count3 = cur.execute("SELECT COUNT (*) FROM dailys WHERE id = 3")
+        if count3.fetchone()[0] >= 1:
+            cur.execute("UPDATE dailys SET choice=? WHERE id = 3", (choiceC, ))
+        else:
+            cur.execute("INSERT INTO dailys (choice) VALUES (?)", (choiceC, ))
+
         conn.commit()
         conn.close()
 

@@ -108,19 +108,19 @@ def run_gacha():
         cur = conn.cursor()
         count1 = cur.execute("SELECT COUNT (*) FROM dailys WHERE id = 1")
         if count1.fetchone()[0] >= 1:
-            cur.execute("UPDATE dailys SET choice=? WHERE id = 1", (choiceA, ))
+            cur.execute("UPDATE dailys SET choice=?, boolean_clear=0 WHERE id = 1", (choiceA, ))
         else:
             cur.execute("INSERT INTO dailys (choice) VALUES (?)", (choiceA, ))
 
         count2 = cur.execute("SELECT COUNT (*) FROM dailys WHERE id = 2")
         if count2.fetchone()[0] >= 1:
-            cur.execute("UPDATE dailys SET choice=? WHERE id = 2", (choiceB, ))
+            cur.execute("UPDATE dailys SET choice=?, boolean_clear=0 WHERE id = 2", (choiceB, ))
         else:
             cur.execute("INSERT INTO dailys (choice) VALUES (?)", (choiceB, ))
 
         count3 = cur.execute("SELECT COUNT (*) FROM dailys WHERE id = 3")
         if count3.fetchone()[0] >= 1:
-            cur.execute("UPDATE dailys SET choice=? WHERE id = 3", (choiceC, ))
+            cur.execute("UPDATE dailys SET choice=?, boolean_clear=0 WHERE id = 3", (choiceC, ))
         else:
             cur.execute("INSERT INTO dailys (choice) VALUES (?)", (choiceC, ))
 

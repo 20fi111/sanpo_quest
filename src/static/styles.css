@@ -18,13 +18,20 @@ form input{
     font-size: 1.4rem;
 }
 
+img{
+    max-width: 100%;
+    max-height: auto;
+}
+
 p{
     font-size:1.6rem;
 }
 
 .nav_lock{
-    position: sticky;
+    position: fixed;
     top:0;
+    left:0;
+    width:100%;
     z-index:2000;
     background-color:#040036;
 }
@@ -33,11 +40,13 @@ footer{
     display:flex;
     position:relative;
     justify-content:space-around;
-    position: sticky;
-    bottom:0%;
+    position: fixed;
+    bottom: -3.2rem;
+    left:0;
+    width: 100%;
     z-index:2000;
     background-color:#040036;
-    padding: 0.4rem;
+    padding: 0.6rem;
 }
 
 main{
@@ -45,16 +54,34 @@ main{
 }
 
 .button-normal{
-    background-color: #99ffff;
+    color: #fff;
+    font-weight:bold;
+    font-size: 1.6rem;
+    border: none;
+    border-radius: 0.4rem;
+    background-color: #78e0ff;
+}
+
+.button-normal:hover{
+  color: #505050;
 }
 
 .button-important{
     color: #fff;
+    font-weight:bold;
+    font-size: 1.6rem;
+    border: none;
+    border-radius: 0.4rem;
     background-color: #FFC83C;
+}
+
+.button-important:hover{
+  color: #505050;
 }
 
 .button-register{
     color: #fff;
+    font-weight:bold;
     background-color: #040036;
 }
 
@@ -98,9 +125,9 @@ main{
     display:flex;
     justify-content:space-between;
     filter:drop-shadow(0.4rem 0.4rem 0.4rem #505050);
-    width: 20%;
-    min-width: 28rem;
-    max-width: 60rem;
+    width: 40%;
+    min-width: 32rem;
+    max-width: 48rem;
     margin: auto;
     margin-top:2.4rem;
     background: linear-gradient(#99ffff,70%,#6464e0);
@@ -115,39 +142,161 @@ main{
   }
 
   .dailyquest label{
-    padding: 0.8rem;
+    padding: 1.2rem;
     color:#fff;
     -webkit-transform: skew(-10deg);
-    font-size: 1.8rem;
+    font-size: 2.0rem;
     font-weight:bold;
   }
 
   .dailyquest button{
+    margin:0.8rem;
     -webkit-transform: skew(-10deg);
   }
 
-
-.dailyquest_home{
-    display:block;
+  .mainquest{
+    display:flex;
+    justify-content:space-between;
     filter:drop-shadow(0.4rem 0.4rem 0.4rem #505050);
-    width: 20%;
-    min-width: 16rem;
-    max-width: 60rem;
-    margin: 1.2rem;
-    background: linear-gradient(#99ffff,70%,#6464e0);
+    width: 40%;
+    min-width: 32rem;
+    max-width: 48rem;
+    margin: auto;
+    margin-top:2.4rem;
+    background: linear-gradient(#ffe090,70%,#ffa020);
     border-radius: 0.8rem;
     -webkit-transform: skew(10deg);
   }
-  .dailyquest_home p{
+  .mainquest p{
     padding: 0.6rem;
     color:#fff;
     -webkit-transform: skew(-10deg);
     font-weight: bold;
   }
 
+  .mainquest label{
+    padding: 1.2rem;
+    color:#fff;
+    -webkit-transform: skew(-10deg);
+    font-size: 2.0rem;
+    font-weight:bold;
+  }
+
+  .mainquest button{
+    margin:0.8rem;
+    -webkit-transform: skew(-10deg);
+  }
+
+
+.dailyquest_home{
+    display:block;
+    filter:drop-shadow(0.2rem 0.2rem 0.2rem #505050);
+    width: 30%;
+    min-width: 16rem;
+    max-width: 48rem;
+    margin: 0.8rem;
+    background: linear-gradient(#99ffff,70%,#6464e0);
+    border-radius: 0.8rem;
+    -webkit-transform: skew(10deg);
+    overflow: hidden;
+  }
+  .dailyquest_home p{
+    padding: 0.8rem 0.8rem 0.4rem 0.8rem;
+    color:#fff;
+    -webkit-transform: skew(-10deg);
+    font-weight: bold;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+
+  .dailyquest_home:hover p{
+    padding: 0.8rem 0.8rem 0.4rem 0.8rem;
+    color:#fff;
+    -webkit-transform: skew(-10deg);
+    font-weight: bold;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+
   .no_scroll{
     position:fixed;
     left:0;
     right:0;
     overflow:hidden;
+  }
+
+  .title{
+    background:linear-gradient(#fff, #ffc83c);
+    width:60%;
+    margin:auto;
+    margin-top:6rem;
+    clip-path:polygon(10% 0%, 0% 50%, 10% 100%, 90% 100%, 100% 50%, 90% 0%);
+  }
+
+  .title h1{
+    padding:0.8rem;
+  }
+
+  #map{
+    height: 100%;
+    position: absolute;
+	  top:0; left:0; right:0;
+    z-index: 0;
+  }
+  .search_form{
+    display:flex;
+    filter:drop-shadow(0.2rem 0.2rem 0.2rem #505050);
+    position:absolute;
+    align-items: center;
+    top:8.8rem;
+    right:0.4rem;
+	  z-index: 2000;
+    border: 0.2rem solid #ffc83c;
+    border-radius:2.4rem;
+    overflow:hidden
+  }
+
+  .search_box{
+    display:flex;
+    outline:none;
+    border: none;
+    font-size:1.2rem;
+    padding: 1.2rem 0.4rem;
+    box-sizing: border-box;
+    height: 3.2rem;
+    width: 80%;
+    max-width:12rem;
+  }
+  .search_button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    min-width:3.6rem;
+    height: 3.2rem;
+    border: none;
+    background-color: #ffc83c;
+    cursor: pointer;
+}
+  .search_button::after{
+    height:1.6rem;
+    width:80%;
+    min-width:1.6rem;
+    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%20%3Cpath%20d%3D%22M23.7%2020.8%2019%2016.1c-.2-.2-.5-.3-.8-.3h-.8c1.3-1.7%202-3.7%202-6C19.5%204.4%2015.1%200%209.7%200S0%204.4%200%209.7s4.4%209.7%209.7%209.7c2.3%200%204.3-.8%206-2v.8c0%20.3.1.6.3.8l4.7%204.7c.4.4%201.2.4%201.6%200l1.3-1.3c.5-.5.5-1.2.1-1.6zm-14-5.1c-3.3%200-6-2.7-6-6s2.7-6%206-6%206%202.7%206%206-2.6%206-6%206z%22%20fill%3D%22%23fff%22%3E%3C%2Fpath%3E%20%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    content: '';
+  }
+
+  #daily_container{
+    display:block;
+    position: absolute;
+    top:8rem;
+    z-index: 2000;
+    height:8rem;
+    width:16rem;
   }

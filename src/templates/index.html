@@ -9,39 +9,6 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=ここにAPIキーをいれる&libraries=places&callback=initMap" defer></script>
 <script src="/static/map.js"></script>
 
-<style>
-  #map{
-    height: 90%;
-    position: absolute;
-	  top:0; left:0; right:0;
-    z-index: 0;
-  }
-  #kensaku{
-    display:block;
-    position: relative;
-    top:60%;
-    left:1.2rem;
-	  z-index: 2000;
-    padding:1.2rem;
-    margin: auto;
-    height:8rem;
-    width:15rem;
-    background-color: #FFC83C;
-
-  }
-  #daily_container{
-    display:block;
-    position: absolute;
-    top:8rem;
-    z-index: 2000;
-    height:8rem;
-    width:15rem;
-  }
-  input{
-    display:block;
-    margin:auto;
-  }
-</style>
 
 <div id="map"></div>
 
@@ -53,9 +20,9 @@
 </div>
 
 
-<div id="kensaku">
-  <input type="text" id="keyword" autocomplete="off"> </input>
-   <button id="get_location">検索</button>
+<div class="search_form">
+  <input type="text" class="search_box" id="keyword" autocomplete="off"> </input>
+   <button class="search_button" id="get_location"></button>
 </div>
 
 

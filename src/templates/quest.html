@@ -5,35 +5,34 @@
 {% endblock %}
 
 {% block main %}
-
-<style>
-
-    div{
-        display: flex;
-        justify-content: center;
-    }
-</style>
-
+    <div class="title">
+        <h1>デイリークエスト</h1>
+    </div>
     {% for daily in dailys %}
+    {% if daily[2] == 0 %}
         <form action="/achieve_daily_quest" method="POST">
             <div class="dailyquest">
                 <label for="{{ daily[0] }}">{{ daily[1] }}</label>
                 <input type="hidden"  name="id" value="{{ daily[0] }}">
-                <button class="btn button-important" type="submit">達成</button>
+                <button class="button-important" type="submit">クリア</button>
             </div>
         </form>
+        {% endif %}
     {% endfor %}
 
-
-
+    <div class="title">
+        <h1>メインクエスト</h1>
+    </div>
     {% for spot in spots %}
+    {% if spot[3] == 0 %}
         <form action="/achieve_spot_quest" method="POST">
-            <div class="dailyquest">
+            <div class="mainquest">
                 <label for="{{ spot[0] }}">{{ spot[1] }}</label>
                 <input type="hidden"  name="id" value="{{ spot[0] }}">
-                <button class="btn button-important" type="submit">達成</button>
+                <button class="button-normal" type="submit">クリア</button>
             </div>
         </form>
+        {% endif %}
     {% endfor %}
 
 {% endblock %}
